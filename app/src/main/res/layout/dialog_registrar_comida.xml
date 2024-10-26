@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:hint="Calorias (cal)"
+                android:hint="Calorias (kcal)"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/design_default_color_primary"
                 app:endIconMode="clear_text"

@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:hint="Gasto calórico (cal)"
+                android:hint="Gasto calórico (kcal)"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/design_default_color_primary"
                 app:endIconMode="clear_text"

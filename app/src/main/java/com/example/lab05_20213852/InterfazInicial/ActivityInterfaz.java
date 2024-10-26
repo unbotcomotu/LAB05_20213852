@@ -67,8 +67,8 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
         setContentView(b.getRoot());
         Intent intent=getIntent();
         caloriasRecomendadas=intent.getIntExtra("caloriasRecomendadas",0);
-        b.caloriasRecomendadas.setText(caloriasRecomendadas+" cal");
-        b.caloriasRestantes.setText(caloriasRecomendadas+" cal");
+        b.caloriasRecomendadas.setText(caloriasRecomendadas+" kcal");
+        b.caloriasRestantes.setText(caloriasRecomendadas+" kcal");
         b.periodoNotificaciones.setText(periodoNotificaciones+" min");
         objetivo=intent.getIntExtra("objetivo",-1);
         switch (objetivo){
@@ -189,9 +189,9 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
         recyclerViewCenaAdapter.notifyDataSetChanged();
         recyclerViewActividadesFisicasAdapter.notifyDataSetChanged();
         caloriasConsumidas=0;
-        b.caloriasConsumidas.setText("0");
+        b.caloriasConsumidas.setText("0 kcal");
         caloriasRestantes=caloriasRecomendadas;
-        b.caloriasRestantes.setText(caloriasRestantes.toString());
+        b.caloriasRestantes.setText(caloriasRestantes.toString()+" kcal");
     }
 
     private void registrarComida(){
@@ -262,22 +262,22 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
             caloriasAux-=actividadFisica.getGastoCalorico();
         }
         caloriasConsumidas=caloriasAux;
-        b.caloriasConsumidas.setText(caloriasConsumidas+" cal");
+        b.caloriasConsumidas.setText(caloriasConsumidas+" kcal");
         caloriasRestantes=caloriasRecomendadas-caloriasConsumidas;
 
         if(caloriasRestantes<0){
-            b.caloriasRestantes.setText(""+-1*caloriasRestantes+" cal");
-            if(superoRecomendacion){
+            b.caloriasRestantes.setText(""+-1*caloriasRestantes+" kcal");
+            if(!superoRecomendacion){
                 b.textoFaltaDe.setText("Sobredosis de: ");
-                superoRecomendacion=false;
-                Notificacion.lanzarNotificacion("reactivasHigh", NotificationCompat.PRIORITY_HIGH,"Bajo la cantidad de calorías recomendadas","Debido a las actividades físicas realizadas, se encuentra bajo el nivel recomendado de calorías para "+(objetivo==0?"subir de peso":objetivo==1?"bajar de peso":objetivo==2?"mantener tu peso":"no lo bugees :'v"), R.drawable.iconlowkcal,this,ActivityInterfaz.class);
+                superoRecomendacion=true;
+                Notificacion.lanzarNotificacion("reactivasHigh", NotificationCompat.PRIORITY_HIGH,"Sobre la cantidad de calorías recomendadas","Debido a los alimentos consumidos, se encuentra sobre el nivel recomendado de calorías para "+(objetivo==0?"subir de peso":objetivo==1?"bajar de peso":objetivo==2?"mantener tu peso":"no lo bugees :'v")+".", R.drawable.iconhighkcal,this,ActivityInterfaz.class);
             }
         }else {
-            b.caloriasRestantes.setText(""+caloriasRestantes+" cal");
-            if(!superoRecomendacion){
+            b.caloriasRestantes.setText(""+caloriasRestantes+" kcal");
+            if(superoRecomendacion){
                 b.textoFaltaDe.setText("Falta de: ");
-                superoRecomendacion=true;
-                Notificacion.lanzarNotificacion("reactivasHigh", NotificationCompat.PRIORITY_HIGH,"Sobre la cantidad de calorías recomendadas","Debido a las consumidas, se encuentra sobre el nivel recomendado de calorías para "+(objetivo==0?"subir de peso":objetivo==1?"bajar de peso":objetivo==2?"mantener tu peso":"no lo bugees :'v"), R.drawable.iconhighkcal,this,ActivityInterfaz.class);
+                superoRecomendacion=false;
+                Notificacion.lanzarNotificacion("reactivasHigh", NotificationCompat.PRIORITY_HIGH,"Bajo la cantidad de calorías recomendadas","Debido a las actividades físicas realizadas, se encuentra bajo el nivel recomendado de calorías para "+(objetivo==0?"subir de peso":objetivo==1?"bajar de peso":objetivo==2?"mantener tu peso":"no lo bugees :'v")+".", R.drawable.iconlowkcal,this,ActivityInterfaz.class);
             }
         }
     }
@@ -302,7 +302,7 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
                     break;
                 default:
                     titulo="Por qué lo bugeas:(";
-                    texto="Eres niño malo";
+                    texto="Eres niño malo.";
                     break;
             }
         }else {
@@ -321,7 +321,7 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
                     break;
                 default:
                     titulo="Por qué lo bugeas:(";
-                    texto="Eres niño malo";
+                    texto="Eres niño malo.";
                     break;
             }
         }

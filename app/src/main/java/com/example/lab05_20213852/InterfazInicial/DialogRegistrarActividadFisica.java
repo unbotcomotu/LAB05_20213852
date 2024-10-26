@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,6 +96,7 @@ public class DialogRegistrarActividadFisica extends DialogFragment{
                     activarBotonRegistrar();
                 }
             });
+            inputHora.setInputType(InputType.TYPE_NULL);
             inputHora.setOnClickListener(view -> seleccionarHora());
 
             botonRegistrar.setElevation(8);
