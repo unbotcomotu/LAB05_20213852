@@ -53,12 +53,12 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
     private Integer timestampTotal;
     private Boolean superoRecomendacion=false;
     private Integer objetivo;
-    private Integer horaDelDia;
-    private Integer periodoNotificaciones=30;
+    private Integer horaDelDia; //desayuno: 3AM 12PM, almuerzo: 12PM 6PM y cena 6PM 3AM
+    private Integer periodoNotificaciones=55; //cada cuántos minutos se lanza la notificación motivacional
     private Integer detectorNuevaNotificacion=0;
-    private final static Integer horaInicial=0;
-    private final static Integer minutoInicial=0;
-    private final static Double acelerador=100.0;
+    private final static Integer horaInicial=0; //la hora a la que empieza la hora en la aplicación
+    private final static Integer minutoInicial=0; //el minuto al que empieza la hora en la aplicacion. Podrían ser a la hora actual real, pero que sean manuales permite hacer pruebas más variadas.
+    private final static Double acelerador=1000.0; //el acelerador aumenta la velocidad a la que pasa el tiempo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,17 +144,17 @@ public class ActivityInterfaz extends AppCompatActivity implements DialogDataLin
                     if(horaDelDiaAux!=horaDelDia){
                         switch (horaDelDiaAux){
                             case 0:
-                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora del desayuno!","No se olvide de consumir un desayuno saludable e indicado para sus objetivos, así como de registrarlo en la aplicación", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
+                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora del desayuno!","No se olvide de consumir un desayuno saludable e indicado para sus objetivos, así como de registrarlo en la aplicación.", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
                                 b.horaDelDia.setText("Hora del desayuno");
                                 b.horaDelDia.setTextColor(Color.parseColor("#FFEB3B"));
                                 break;
                             case 1:
-                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora del almuerzo!","No se olvide de consumir un almuerzo saludable e indicado para sus objetivos, así como de registrarlo en la aplicación", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
+                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora del almuerzo!","No se olvide de consumir un almuerzo saludable e indicado para sus objetivos, así como de registrarlo en la aplicación.", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
                                 b.horaDelDia.setText("Hora del almuerzo");
                                 b.horaDelDia.setTextColor(Color.parseColor("#3BFF89"));
                                 break;
                             case 2:
-                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora de la cena!","No se olvide de consumir una cena saludable e indicada para sus objetivos, así como de registrarlo en la aplicación", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
+                                Notificacion.lanzarNotificacion("recurrentesHigh", NotificationCompat.PRIORITY_HIGH,"¡Hora de la cena!","No se olvide de consumir una cena saludable e indicada para sus objetivos, así como de registrarlo en la aplicación.", R.drawable.icongoodkcal,this,ActivityInterfaz.class);
                                 b.horaDelDia.setText("Hora de la cena");
                                 b.horaDelDia.setTextColor(Color.parseColor("#3B45FF"));
                                 break;

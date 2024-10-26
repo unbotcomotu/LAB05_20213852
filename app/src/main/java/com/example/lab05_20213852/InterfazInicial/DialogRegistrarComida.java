@@ -129,6 +129,8 @@ public class DialogRegistrarComida extends DialogFragment implements DialogDataL
                     activarBotonRegistrar();
                 }
             });
+            inputHora.setFocusable(false);
+            inputHora.setClickable(true);
             inputHora.setInputType(InputType.TYPE_NULL);
             inputHora.setOnClickListener(view -> seleccionarHora());
 

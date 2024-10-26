@@ -96,6 +96,8 @@ public class DialogRegistrarActividadFisica extends DialogFragment{
                     activarBotonRegistrar();
                 }
             });
+            inputHora.setFocusable(false);
+            inputHora.setClickable(true);
             inputHora.setInputType(InputType.TYPE_NULL);
             inputHora.setOnClickListener(view -> seleccionarHora());
 
@@ -142,7 +144,7 @@ public class DialogRegistrarActividadFisica extends DialogFragment{
         int minute = calendar.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
                 (view, selectedHour, selectedMinute) -> {
-                    String hora = String.format("%02d:%02d", selectedHour, selectedMinute);
+                    hora = String.format("%02d:%02d", selectedHour, selectedMinute);
                     inputHora.setText(hora);
                 }, hour, minute, true);
         timePickerDialog.show();

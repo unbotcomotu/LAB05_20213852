@@ -133,7 +133,7 @@
                 app:boxStrokeColor="@color/design_default_color_primary"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:helperText="Campo requerido">
+                app:helperText="En caso de estar vacío, se tomará la hora actual">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputHora"
